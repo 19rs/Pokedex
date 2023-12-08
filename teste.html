@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        main {
+            display: grid;
+            align-items: center;
+            /* justify-content: center; */
+            height: 100vh;
+            width: 100vw;
+        }
+
+        section {
+            border: 1px solid gray;
+            height: 80%;
+            width: 35%;
+            margin: auto;
+            /* display: grid; */
+        }
+
+        ul {
+            list-style-type: none;
+            display: grid;
+            row-gap: 10px;
+            width: 100%;
+            background-color: yellow;
+        }
+
+        #stat {
+            display: grid;
+            grid-template-columns: 175px 1fr;
+            width: 100%;
+            padding: 10px;
+        }
+
+        #nomeStat {
+            background-color: lightgray;
+        }
+
+        #valorStatDiv {
+            display: flex;
+            background-color: lightcoral;
+
+        }
+
+        #valorStat {
+            background-color: green;
+            width: 230px;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <h1>STATS</h1>
+            <ul>
+                <li id="stat">
+                    <p id="nomeStat">HP:</p>
+                    <div id="valorStatDiv">
+                        <p id="valorStat">56</p>
+                    </div>
+                </li>
+                <li>
+                    ATTACK:
+                </li>
+                <li>
+                    DEFENSE:
+                </li>
+                <li>
+                    SPECIAL-ATTACK:
+                </li>
+                <li>
+                    SPECIAL-DEFENSE:
+                </li>
+                <li>
+                    SPEED:
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        header {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            /* position: fixed; */
+            width: 100%;
+            align-items: center;
+            justify-items: center;
+            min-height: 12vh;
+            background-color: #263238;
+            padding: 10px;
+            /* border-bottom: 15px solid white; */
+        }
+
+        header div:first-child {
+            justify-self: start;
+        }
+
+        header button {
+            padding: 8px 30px;
+        }
+
+        header div:last-child {
+            justify-self: end;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr 2fr;
+            height: 85vh;
+            row-gap: 50px;
+            column-gap: 20px;
+            padding: 10vh 5vw;
+            /* background-color: blue; */
+        }
+
+        main > div:first-child {
+            display: grid;
+            height: 100%;
+            grid-template-rows: 1fr 1fr;
+            row-gap: 30px;
+            /* background-color: red; */
+        }
+
+        main > div:first-child > div:first-child {
+            border: 1px solid black;
+            border-top: 2px solid black;
+            border-left: 2px solid black;
+            border-top-left-radius: 10px;
+        }
+
+        main > div:first-child > div:last-child {
+            border: 2px solid black;
+            border-bottom-left-radius: 10px;
+        }
+
+        main > div:last-child {
+            display: flex;
+            flex-direction: column;
+            /* grid-template-rows: 1fr 1fr; */
+            row-gap: 30px;
+        }
+
+        main > div:last-child > div:first-child {
+            border: 2px solid black;
+            border-top-right-radius: 10px;
+            height: 70px;
+        }
+
+        main > div:last-child > div:last-child {
+            /* align-self: start; */
+            border: 2px solid black;
+            border-bottom-right-radius: 10px;
+            height: 100%;
+        }
+
+        #coluna2 {
+            border: 1px solid black;
+            border-top: 2px solid black;
+            border-bottom: 2px solid black;
+            /* display: grid;
+            grid-template-rows: 50px 1fr; */
+            
+        }
+
+        #stats {
+            /* display: grid;
+            height: 90%;
+            justify-content: center;
+            align-items: center;
+            row-gap: 5px; */
+        }
+
+        #fotoFrente, #fotoCostas {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #fotoFrente img, #fotoCostas img {
+            width: 80%;
+            display: flex;
+        }
+
+        ul {
+            margin-top: 50px;
+            list-style-type: none;
+            display: grid;
+            row-gap: 2px;
+            width: 100%;
+            /* background-color: yellow; */
+        }
+
+        #coluna2 h2 {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #stat {
+            display: grid;
+            grid-template-columns: 175px 1fr;
+            width: 100%;
+            padding: 5px 10px;
+        }
+
+        #statName {
+            background-color: lightgray;
+            padding: 5px;
+            font-weight: semi-bold;
+            border-left: 1px solid black;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            /* border-right: 1px solid black; */
+            /* margin-right: 7px; */
+        }
+
+        #statValueBG {
+            display: flex;
+            background-color: gray;
+            width: 255px;
+            border: 1px solid black;
+        }
+
+        #statValueBar {
+            width: 230px;
+            padding: 5px;
+            color: white;
+            font-weight: bold;
+            border-right: 1px solid black;
+            /* border: 1px solid white; */
+            /* z-index: 10; */
+        }
+
+        #tipos {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            justify-items: center;
+            /* padding: 5px; */
+        }
+
+        #tipos h2 {
+            height: 100%;
+            width: 100%;
+            padding: 10px;
+            /* justify-self: start; */
+            /* padding-right: 50px; */
+            background-color: lightgray;
+            border-right: 1px solid black;
+        }
+
+        #tipos p {
+            height: 100%;
+            padding: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* color: white; */
+            font-weight: 300;
+        }
+
+        #tipos p:last-child {
+            border-left: 1px solid black;
+            border-top-right-radius: 5px;
+        }
+
+        #prevPokemon {
+            position: absolute;
+            left: 10px;
+            top: 50vh;
+            padding: 18px 12px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            /* background-color: transparent; */
+            border: 1px solid gray;
+            /* border: none; */
+            font-weight: bolder;
+            font-size: 1rem;
+            opacity: 0.6;
+        }
+
+        #nextPokemon {
+            position: absolute;
+            right: 10px;
+            top: 50vh;
+            padding: 18px 12px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            /* background-color: transparent; */
+            border: 1px solid gray;
+            /* border: none; */
+            font-weight: bolder;
+            font-size: 1rem;
+            opacity: 0.6;
+        }
+
+        #nextPokemon:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <button onclick="window.history.back()">Voltar</button>
+        </div>
+        <div id="nomePokemon">
+            <h1 id="nome"></h1>
+        </div>
+        <div>
+            <button id="btnAdicionarRemover" onclick="adicionarRemover()">Adicionar na Pokédex</button>
+        </div>
+    </header>
+    <main>
+        <div id="coluna1">
+            <div id="fotoFrente">
+               
+            </div>
+            <div id="fotoCostas">
+                
+            </div>
+        </div>
+
+        <div id="coluna2">
+            <h2>STATS</h2>
+            <ul id="statsList">
+
+            </ul>
+        </div>
+        
+        <div>
+            <div id="tipos">
+                <h2>TIPOS</h2>
+            </div>
+            <div>
+                Moves
+            </div>
+        </div>
+    </main>
+
+    <button id="prevPokemon" onclick="trocarPokemon('-')">
+        <
+    </button>
+
+    <button id="nextPokemon" onclick="trocarPokemon('+')">
+        >
+    </button>
+
+    <script>
+
+        let idPokemon = sessionStorage.getItem('idPokemonDetalhe')
+        //document.onload = idPokemon = sessionStorage.getItem('idPokemonDetalhe')
+        console.log(idPokemon + ' oi')
+
+        function trocarPokemon(o) {
+            o === '+' ? idPokemon++ : idPokemon--
+
+            //idPokemon++
+            sessionStorage.setItem('idPokemonDetalhe', idPokemon)
+
+            let header = document.getElementsByTagName('header')
+            header[0].style.display = 'none'
+            let main = document.getElementsByTagName('main')
+            main[0].style.display = 'none'
+
+            //location.replace(location.href)
+            location.reload()
+            console.log(idPokemon)
+            //carregarDados()
+        }
+
+        document.onload = mostrarEsconderBotoes()
+
+        function mostrarEsconderBotoes() {
+            if(idPokemon === '1') {
+                let prevButton = document.getElementById('prevPokemon')
+                prevButton.setAttribute('disabled', 'disabled')
+            } else if(idPokemon === '1017') {
+                let nextButton = document.getElementById('nextPokemon')
+                nextButton.setAttribute('disabled', 'disabled')
+            }
+        }
+
+        let listaCoresTipos = [
+            {tipo: 'bug', cor: 'yellowgreen', cor2: 'rgba(154, 205, 50, 0.8)'},
+            {tipo: 'water', cor: '#0040ff', cor2: 'rgba(0, 64, 255, 0.8)'},
+            {tipo: 'electric', cor: 'yellow', cor2: 'rgba(255, 255, 0, 0.7)'},
+            {tipo: 'grass', cor: '#009900', cor2: 'rgba(0, 153, 0, 0.8)'},
+            {tipo: 'fire', cor: '#ff0000', cor2: 'rgba(255, 0, 0, 0.8)'},
+            {tipo: 'normal', cor: '#ffb366', cor2: 'rgba(255, 179, 102, 0.8)'},
+            {tipo: 'ground', cor: '#ff531a', cor2: 'rgba(255, 83, 26, 0.8)'},
+            {tipo: 'poison', cor: '#cc00cc', cor2: 'rgba(204, 0, 204, 0.8)'},
+            {tipo: 'ghost', cor: '#660066', cor2: 'rgba(102, 0, 102, 0.8)'},
+            {tipo: 'dragon', cor: 'Coral', cor2: 'rgba(255, 127, 80, 0.8)'},
+            {tipo: 'rock', cor: 'gray', cor2: 'rgba(128, 128, 128, 0.8)'},
+            {tipo: 'psychic', cor: 'pink', cor2: 'rgba(255, 192, 203, 0.8)'},
+            {tipo: 'ice', cor: '#80d4ff', cor2: 'rgba(128, 212, 255, 0.8)'},
+            {tipo: 'fighting', cor: 'brown', cor2: 'rgba(165, 42, 42, 0.8)'},
+            {tipo: 'fairy', cor: 'Bisque', cor2: 'rgba(255, 228, 196, 0.8)'},
+            {tipo: 'dark', cor: '#515151', cor2: 'rgba(81, 81, 81, 0.8)'},
+            {tipo: 'steel', cor: 'silver', cor2: 'rgba(192, 192, 192, 0.8)'},
+            {tipo: 'flying', cor: 'LightBlue', cor2: 'rgba(173, 216, 230, 0.8)'}
+        ]
+
+        document.onload = carregarDados()
+
+        function carregarDados() {
+            fetch(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`)
+                .then(response => response.json())
+                .then(function(data) {
+                    nome.innerHTML = `#${idPokemon} - ${data.name.toUpperCase()}`
+
+                    let type = data.types[0].type.name
+                    let corFundo = listaCoresTipos.find((tipoPokemon) => tipoPokemon.tipo === type);
+                    let header = document.getElementsByTagName('header')
+                    let tipos = document.getElementById('tipos')
+                    let colunaStats = document.getElementById('coluna2')
+
+                    colunaStats.style.backgroundColor = corFundo.cor2
+                    colunaStats.opacity = '0.5'
+
+                    //console.log(header[0])
+                    header[0].style.backgroundColor = corFundo.cor
+
+                    let fotoFrente = document.getElementById('fotoFrente')
+                    let imgFrente = document.createElement('img')
+                    //imgFrente.src = data.sprites.other.dream_world.front_default
+                    //imgFrente.src = data.sprites.versions['generation-v']['black-white'].animated.front_default
+                    imgFrente.src = data.sprites.versions['generation-v']['black-white'].front_default
+                    fotoFrente.appendChild(imgFrente)
+
+                    fotoFrente.style.backgroundColor = corFundo.cor2
+                    // fotoFrente.style.opacity = '0.8'
+
+                    let fotoCostas = document.getElementById('fotoCostas')
+                    let imgCostas = document.createElement('img')
+                    //imgCostas.src = data.sprites.versions['generation-v']['black-white'].animated.back_default
+                    imgCostas.src = data.sprites.versions['generation-v']['black-white'].back_default
+                    fotoCostas.appendChild(imgCostas)
+                    
+                    fotoCostas.style.backgroundColor = corFundo.cor2
+                    // fotoCostas.style.opacity = '0.8'
+
+
+
+
+                    //MouseOver - MouseOut
+                    fotoFrente.addEventListener('mouseover', function () {
+                        imgFrente.src = data.sprites.versions['generation-v']['black-white'].animated.front_default
+                        imgFrente.style.width = '45%'
+                    });
+
+                    fotoFrente.addEventListener('mouseout', function () {
+                        imgFrente.src = data.sprites.versions['generation-v']['black-white'].front_default
+                        imgFrente.style.width = '80%'
+                    });
+
+                    fotoCostas.addEventListener('mouseover', function () {
+                        imgCostas.src = data.sprites.versions['generation-v']['black-white'].animated.back_default
+                        imgCostas.style.width = '45%'
+                    });
+
+                    fotoCostas.addEventListener('mouseout', function () {
+                        imgCostas.src = data.sprites.versions['generation-v']['black-white'].back_default
+                        imgCostas.style.width = '80%'
+                    });
+
+
+
+
+
+                    data.stats.forEach(stats => {
+
+                        let statsList = document.getElementById('statsList')
+
+                        let stat = document.createElement('li')
+                        stat.id = 'stat'
+
+                        let statNome = document.createElement('p')
+                        statNome.id = 'statName'
+                        statNome.innerHTML = stats.stat.name.toUpperCase() + ': '
+                        
+                        let statValueBG = document.createElement('div')
+                        statValueBG.id = 'statValueBG'
+
+                        let statValueBar = document.createElement('p')
+                        statValueBar.id = 'statValueBar'
+                        statValueBar.innerHTML = stats.base_stat
+                        statValueBar.style.width = `${stats.base_stat}px`
+                        statValueBar.style.backgroundColor = corFundo.cor2
+
+                        statValueBG.appendChild(statValueBar)
+
+                        stat.appendChild(statNome)
+                        stat.appendChild(statValueBG)
+
+                        statsList.append(stat)
+
+                    });
+
+                    //Tipos
+                    let typesList = document.getElementById('tipos')
+
+                    if(data.types.length > 1) {
+                        data.types.forEach(tipoPokemon => {
+                            let tipo = document.createElement('p')
+                            tipo.innerHTML = tipoPokemon.type.name.toUpperCase()
+                            //console.log(tipoPokemon.type.name)
+
+                            let nomeTipo = tipoPokemon.type.name
+                            let corTipo = listaCoresTipos.find((tipoPokemon) => tipoPokemon.tipo === nomeTipo);
+                            //console.log(corTipo)
+
+                            tipo.style.backgroundColor = corTipo.cor2
+                            typesList.appendChild(tipo)
+                        });
+                    } else {
+                        let tipo = document.createElement('p')
+                            tipo.innerHTML = type.toUpperCase()
+                            tipo.style.backgroundColor = corFundo.cor2
+                            tipo.style.gridColumn = '2 / span 2'
+                            typesList.appendChild(tipo)
+
+                            let textoTipos = typesList.children[0]
+                            textoTipos.innerHTML = 'TIPO'
+                    }
+
+                })
+        }
+    </script>
+</body>
+</html>

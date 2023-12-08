@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        header {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            position: fixed;
+            width: 100%;
+            align-items: center;
+            justify-items: center;
+            min-height: 12vh;
+            background-color: #263238;
+            padding: 10px;
+        }
+
+        header a {
+            text-decoration: none;
+            border: 1px solid black;
+            padding: 6px;
+            background-color: lightgray;
+            color: black;
+        }
+
+        header button {
+            padding: 5px;
+        }
+
+        header #titulo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header img {
+            height: 10vh;
+            padding-bottom: 10px;
+        }
+
+        header div:first-child {
+            justify-self: start;
+        }
+
+        header div:last-child {
+            display: flex;
+            justify-content: end;
+            gap: 10px;
+        }
+        
+        header input {
+             width: 15%;
+             padding: 5px;
+             border-radius: 2px;
+        }
+
+        #lista {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            background-color: white;
+            row-gap: 50px;
+            column-gap: 20px;
+            padding: 17vh 20px;
+        }
+
+        .pokemon {
+            display: grid;
+            grid-template-rows: 70px 1fr 70px 100px;
+            align-items: center;
+            justify-items: center;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+
+        .pokemon h1 {
+            /* max-width: 50%; */
+            text-align: center;
+        }
+
+        .pokemon img {
+            width: 15vw;
+            height: 25vh;
+        }
+
+        #botoes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 10px;
+            width: 100%;
+            height: 35%;
+            padding: 0px 10px;
+        }
+
+        #botoes button:first-child {
+            font-weight: bold;
+        }
+
+        #dialog {
+            position: fixed;
+            top: 15%;
+            left: 19.3%;
+            width: 800px;
+            height: 475px;
+            border-radius: 5px;
+            /* background-image: url('./img/pokebolaOpen.png'); */
+            background-image: url('./img/pokedex.png');
+            background-repeat: no-repeat;
+            box-shadow: 2px 5px 10px gray;
+            /* background-color: rgba(0, 0, 0, 0); */
+            /* border: none; */
+        }
+
+        #dialog h1 {
+            text-align: center;
+            background-color: bisque;
+            text-decoration: underline;
+            padding-top: 5px;
+            padding-bottom: 8px;
+            font-size: 1.7rem;
+        }
+
+        #divPokemonDialog {
+            position: absolute;
+            top: 185px;
+            left: 220px;
+            width: 100px;
+            height: 100px;
+            /* background-color: bisque; */
+            /* box-shadow: 2px 2px 50px gray; */
+            background: rgb(226,217,157);
+            background: radial-gradient(circle, rgba(226,217,157,0.3) 0%, rgba(182,147,63,0.1) 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #divPokemonDialog img {
+            width: 90%;
+            height: 90%;
+        }
+
+        #divPokemonName {
+            position: absolute;
+            left: 453px;
+            top: 188px;
+            width: 170px;
+            height: 63px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #dialog h2 {
+            /* position: absolute;
+            left: 460px;
+            top: 200px; */
+            color: yellow;
+            font-size: 1.1rem;
+        }
+
+        #divPokemonId {
+            position: absolute;
+            left: 206px;
+            top: 382px;
+            width: 38px;
+            height: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #dialog h3 {
+            color: yellow;
+            font-size: 0.9rem;
+        }
+
+        #divPokemonTipo1 {
+            position: absolute;
+            left: 453px;
+            top: 385px;
+            width: 76px;
+            height: 26px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #divPokemonTipo2 {
+            position: absolute;
+            left: 546px;
+            top: 385px;
+            width: 76px;
+            height: 26px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: yellow;
+        }
+
+        #divDialog > button {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            padding: 2px 6px;
+        }
+
+        #divPokemonStats {
+            position: absolute;
+            left: 453px;
+            top: 262px;
+            width: 170px;
+            height: 54px;
+            display: grid;
+            /* background-color: red; */
+            /* grid-template-columns: 30px 30px 30px 30px; */
+            /* grid-template-columns: 60px 100px; */
+            justify-content: center;
+            align-items: center;
+            /* column-gap: 10px;
+            row-gap: 0px; */ 
+        }
+
+        #divPokemonStats div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #divPokemonStats h3 {
+            font-size: 0.8rem;
+            color: yellow;
+        }
+
+        #prevStat {
+            position: absolute;
+            top: 321px;
+            left: 558px;
+            width: 30px;
+            height: 7px;
+            /* background-color: black; */
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        #nextStat {
+            position: absolute;
+            top: 321px;
+            left: 592px;
+            width: 30px;
+            height: 7px;
+            /* background-color: black; */
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        #prevStat:hover {
+            opacity: 1;
+        }
+
+        #nextStat:hover {
+            opacity: 1;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <a href="pokedex.html">Ver Minha Pokédex</a>
+        </div>
+        <div id="titulo">
+            <!-- <h1>Lista de Pokémons</h1> -->
+            <img src="./img/pokemonLogo.png" alt="">
+        </div>
+        <div>
+            <button id="btnVoltarPagina" onclick="voltarPagina()">Anterior</button>
+            <input type="number" name="pagina" id="numeroPagina" value="1">
+            <button id="btnAvancarPagina" onclick="avancarPagina()">Próxima</button>
+        </div>  
+    </header>
+    <div id="lista"></div>
+    
+
+    <dialog id="dialog">
+        <div id="divDialog">
+            <h1 id="textoDialog"></h1>
+            <button onclick="dialog.close()">x</button>
+            <div id="divPokemonDialog">
+                <img id="imgPokemonDialog" src="" alt="Foto Pokemon">
+            </div>
+            <div id="divPokemonName">
+                <h2 id="nomePokemon"></h2>
+            </div>
+            <div id="divPokemonId">
+                <h3 id="pokemonIdDialog"></h3>
+            </div>
+            <div id="divPokemonTipo1">
+                <h3 id="pokemonTipo1"></h3>
+            </div>
+            <div id="divPokemonTipo2">
+                <h3 id="pokemonTipo2"></h3>
+            </div>
+            <div id="divPokemonStats">
+                <h3 id="statPokemon"></h3>
+                <!-- <p>SPECIAL-ATTACK: 60</p>
+                <p>ATTACK: 75</p>
+                <p>SPECIAL-DEFENSE: 255</p>
+                <p>DEFENSE: 50</p>
+                <p>SPEED: 99</p> -->
+            </div>
+        </div>
+        <button id="prevStat" onclick="trocarStat('-')"></button>
+        <button id="nextStat" onclick="trocarStat('+')"></button>
+    </dialog>
+
+    <script>
+        let listaPokemons = document.getElementById('lista')
+        
+        let listaCoresTipos = [
+            {tipo: 'bug', cor: 'yellowgreen'},
+            {tipo: 'water', cor: '#0040ff'},
+            {tipo: 'electric', cor: 'yellow'},
+            {tipo: 'grass', cor: '#009900'},
+            {tipo: 'fire', cor: '#ff0000'},
+            {tipo: 'normal', cor: '#ffb366'},
+            {tipo: 'ground', cor: '#ff531a'},
+            {tipo: 'poison', cor: '#cc00cc'},
+            {tipo: 'ghost', cor: '#660066'},
+            {tipo: 'dragon', cor: 'Coral'},
+            {tipo: 'rock', cor: 'gray'},
+            {tipo: 'psychic', cor: 'pink'},
+            {tipo: 'ice', cor: '#80d4ff'},
+            {tipo: 'fighting', cor: 'brown'},
+            // {tipo: 'ground', cor: 'Chocolate'},
+            {tipo: 'fairy', cor: 'Bisque'},
+            {tipo: 'dark', cor: '#515151'},
+            {tipo: 'steel', cor: 'silver'},
+            {tipo: 'flying', cor: 'LightBlue'}
+        ]
+
+        
+        let dialog = document.getElementById('dialog')
+
+        // let statsPokemonPokedexDialog = ['HP: ', 'ATTACK: ', 'DEFENSE ', 'SPECIAL-ATTACK ', 'SPECIAL-DEFENSE: 255 ', 'SPEED']
+        let statsPokemonPokedexDialog = ['HP: ', 'ATTACK: ', 'DEFENSE ', 'SPECIAL-ATTACK ', 'SPECIAL-DEFENSE: 255 ', 'SPEED']
+        let indexStatPokemon = 0
+        
+        function trocarStat(o) {
+            let statPokemon = document.getElementById('statPokemon')
+
+            o === '+' ? indexStatPokemon++ : indexStatPokemon--
+
+            if(indexStatPokemon > 5) {
+                indexStatPokemon = 0
+            } else if (indexStatPokemon < 0) {
+                indexStatPokemon = 5
+            }
+
+            statPokemon.innerHTML = statsPokemonPokedexDialog[indexStatPokemon]
+        }
+
+        let pagina = sessionStorage.getItem('pagina') ? sessionStorage.getItem('pagina') : 1;
+        let limit = 30;
+        let offset = limit * (pagina-1);
+        
+
+        let inputPagina = document.getElementById('numeroPagina')
+        inputPagina.value = pagina
+        inputPagina.innerHTML = pagina
+        
+        //let pokemonsNaPokedex = [1, 4, 7, 25]
+        let pokemonsNaPokedex = []
+
+        if(localStorage.getItem('pokemons')) {
+            pokemonsNaPokedex = JSON.parse(localStorage.getItem('pokemons'))
+        }
+        
+        console.log('local storage: ' + localStorage.getItem('pokemons'))
+
+        let botaoVoltar = document.getElementById('btnVoltarPagina')
+        let botaoAvancar = document.getElementById('btnAvancarPagina')
+
+        
+        inputPagina.addEventListener('change', function(e) {
+    
+            if(e.target.value < 1 || e.target.value > 34) {
+                alert('Página não encontrada!\n\nEscolha uma página entre 1 e 34')
+                return
+            }
+            
+            if(e.target.value != '1') {
+                botaoVoltar.removeAttribute('disabled')
+            } else {
+                botaoVoltar.setAttribute('disabled', 'disabled')
+            }
+
+            if(e.target.value === '34') {
+                botaoAvancar.setAttribute('disabled', 'disabled')
+            } else {
+                botaoAvancar.removeAttribute('disabled')
+            }
+
+            pagina = e.target.value
+            sessionStorage.setItem('pagina', pagina)
+            offset = limit * (pagina - 1)
+            
+            atualizarPokemons()
+            window.scrollTo({top: 0, behavior: 'smooth'})
+        })
+
+        document.onload = criarSlots()
+        // document.onload = pagina = inputPagina.value
+        document.onload = habilitarDesabilitarBotoes()
+
+        
+
+        console.log("Input pagina " + inputPagina.value)
+        console.log("pagina: " + pagina)
+
+        function voltarPagina() {
+            pagina--;
+            offset -= limit 
+            inputPagina.value = pagina
+            sessionStorage.setItem('pagina', pagina)
+            atualizarPokemons()
+
+            habilitarDesabilitarBotoes()
+
+            botaoAvancar.removeAttribute('disabled')
+            window.scrollTo({top: 0, behavior: 'smooth'})
+        }
+
+        function avancarPagina() {
+            pagina++;
+            offset += limit 
+            inputPagina.value = pagina
+            sessionStorage.setItem('pagina', pagina)
+            atualizarPokemons()
+
+            habilitarDesabilitarBotoes()
+
+            botaoVoltar.removeAttribute('disabled')
+            window.scrollTo({top: 0, behavior: 'smooth'})
+        }
+
+        function habilitarDesabilitarBotoes() {
+            if(pagina === '1' || pagina === 1) {
+                botaoVoltar.setAttribute('disabled', 'disabled')
+            }
+            else if(pagina === '34') {
+                botaoAvancar.setAttribute('disabled', 'disabled')
+            }
+        }
+
+        function criarSlots() {
+
+            for(let i = 1; i <= 30; i++) {
+                let slot = document.createElement('div');
+                slot.setAttribute("class", "pokemon")
+                slot.setAttribute("id", i)
+
+                let numeroPokemon = document.createElement('h2')
+                slot.appendChild(numeroPokemon)
+
+                let imagemPokemon = document.createElement('img')
+                slot.appendChild(imagemPokemon)
+
+                let nomePokemon = document.createElement('h1')
+                slot.appendChild(nomePokemon)
+
+                let divBotoes = document.createElement('div')
+                divBotoes.setAttribute("id", 'botoes')
+
+                let botaoAcao = document.createElement('button')
+
+
+                botaoAcao.addEventListener('click', function() {
+                    if(pokemonsNaPokedex && pokemonsNaPokedex.includes(parseInt(botaoAcao.dataset.id))) {
+                    
+                        //alert('Pokemon Removido da Pokédex')
+                        let textoNome = document.getElementById('nomePokemon')
+                        textoNome.innerHTML = this.parentNode.parentElement.children[2].innerHTML
+                        dialog.style.backgroundImage = "url('./img/pokebolaOpen.png')"
+
+                        let divDialog = document.getElementById('divDialog')
+
+                        let imagemOld = divDialog.children[1].remove()
+                        let imagem = document.createElement('img')
+
+                        imagem.src = `https://github.com/wellrccity/pokedex-html-js/blob/master/assets/img/pokemons/poke_${botaoAcao.dataset.id}.gif?raw=true`
+
+                        divDialog.appendChild(imagem)
+                        
+                        dialog.showModal()
+                        let index = pokemonsNaPokedex.indexOf(parseInt(botaoAcao.dataset.id));
+                        pokemonsNaPokedex.splice(index, 1);
+
+                        botaoAcao.innerHTML = 'Adicionar'
+                        botaoAcao.style.color = 'green'
+                        localStorage.setItem('pokemons', JSON.stringify(pokemonsNaPokedex));
+                    } else {
+                        //alert('Pokemon Adicionado a Pokédex')
+                        
+                        let textoDialog = document.getElementById('textoDialog')
+                        textoDialog.innerHTML = 'Pokémon Adicionado à Pokédex!'
+                        let textoNome = document.getElementById('nomePokemon')
+                        textoNome.innerHTML = this.parentNode.parentElement.children[2].innerHTML.toUpperCase()
+                        //console.log(this.parentNode.parentElement.children[2].innerHTML)
+                        //dialog.style.backgroundImage = "url('./img/pokebola.png')"
+                        dialog.style.backgroundImage = "url('./img/pokedex.png')"
+
+                        //let divDialog = document.getElementById('divDialog')
+                        let imgPokemonDialog = document.getElementById('imgPokemonDialog')
+
+                        //let imagemOld = imgPokemonDialog
+                        //console.log(imagemOld)
+                        //let imagem = document.createElement('img')
+                        
+                        //imagem.src = `https://github.com/wellrccity/pokedex-html-js/blob/master/assets/img/pokemons/poke_${botaoAcao.dataset.id}.gif?raw=true`
+                        imgPokemonDialog.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${botaoAcao.dataset.id}.gif`
+                        
+                        
+                        //console.log(divDialog)
+                        //imgPokemonDialog.appendChild(imagem)
+
+                        let pokemonIdDialog = document.getElementById('pokemonIdDialog')
+                        pokemonIdDialog.innerHTML = botaoAcao.dataset.id
+
+
+                        let tiposPokemon = []
+                        let pokemonTipo1 = document.getElementById('pokemonTipo1')
+                        let pokemonTipo2 = document.getElementById('pokemonTipo2')
+                        tiposPokemon.push(pokemonTipo1, pokemonTipo2)
+                        console.log(tiposPokemon)
+                        
+                        fetch(`https://pokeapi.co/api/v2/pokemon/${botaoAcao.dataset.id}`)
+                            .then(response => response.json())
+                        .then(function(data) {
+                            // pokemonTipo1.innerHTML = data.types[0].type.name.toUpperCase()
+                            for(let i = 0; i < data.types.length; i++) {
+                                tiposPokemon[i].innerHTML = data.types[i].type.name.toUpperCase()
+                            }
+
+                            statsPokemonPokedexDialog = []
+
+                            data.stats.forEach(stats => {
+                                statsPokemonPokedexDialog.push(stats.stat.name.toUpperCase() + ': ' + stats.base_stat)    
+                            });
+
+                            let statPokemon = document.getElementById('statPokemon')
+                            statPokemon.innerHTML = statsPokemonPokedexDialog[0]
+                        })
+
+                        //Mudar os stats automaticamente
+                        // setInterval(function() {
+                        //     statPokemon.innerHTML = statsPokemonPokedexDialog[0]
+
+                        //     if(indexStatPokemon < 5) {
+                        //         console.log("Olá")
+                        //         statPokemon.innerHTML = statsPokemonPokedexDialog[indexStatPokemon]
+                        //         indexStatPokemon++
+                        //     }
+                        //     indexStatPokemon === 5 ? indexStatPokemon = 0 : ''
+                        // }, 2000)
+                        
+
+                        dialog.showModal()
+                        pokemonsNaPokedex.push(parseInt(botaoAcao.dataset.id))
+        
+                        botaoAcao.innerHTML = 'Remover'
+                        botaoAcao.style.color = 'red'
+        
+                        localStorage.setItem('pokemons', JSON.stringify(pokemonsNaPokedex));
+                    } 
+                })
+
+                divBotoes.appendChild(botaoAcao)
+
+                let botaoDetalhes = document.createElement('button')
+                botaoDetalhes.innerHTML = 'Detalhes'
+                
+                botaoDetalhes.addEventListener('click', function() {
+                    let id = this.parentNode.firstChild.dataset.id
+                    sessionStorage.setItem('idPokemonDetalhe', id)
+                    window.location.href = './detalhes.html'
+                });
+
+                divBotoes.appendChild(botaoDetalhes)
+               
+                slot.appendChild(divBotoes)
+
+                listaPokemons.appendChild(slot)
+            }
+
+            atualizarPokemons()
+        }
+
+
+        function carregarPokemons() {
+
+            for(let i = (offset + 1); i <= (offset + limit); i++) {
+            
+                fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
+                .then(response => response.json())
+                .then(function(data) {
+
+                    let id = data.id
+                    let name = data.name
+                    let type = data.types[0].type.name
+                    let image = data.sprites.other.dream_world.front_default
+                    
+                    let divPokemon = document.getElementById(id - offset);
+
+                    let corFundo = listaCoresTipos.find((tipoPokemon) => tipoPokemon.tipo === type);
+                    divPokemon.style.backgroundColor = corFundo.cor
+                
+                    //let numero = document.createElement('h2')
+                    let numero = divPokemon.children[0]
+                    numero.innerHTML = `#${id}`
+
+                    //let imagem = document.createElement('img')
+                    let imagem = divPokemon.children[1]
+                    imagem.src = image
+                    
+                    //let nome = document.createElement('h1')
+                    let nome = divPokemon.children[2]
+                    nome.innerHTML = name.charAt(0).toUpperCase() + name.slice(1);
+
+                    divPokemon.addEventListener('mouseover', function () {
+                        let imagem = this.children[1]
+                        let id = this.lastChild.firstChild.dataset.id
+                        //console.log(id.dataset.id)
+                        console.log(id)
+                        //let image = `https://github.com/wellrccity/pokedex-html-js/blob/master/assets/img/pokemons/poke_${id}.gif?raw=true`
+                        //let image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`
+                        let image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
+                        imagem.src = image
+                        // imagem.style.width = '10vw'
+                        // imagem.style.height = '15vh'
+                    });
+
+                    divPokemon.addEventListener('mouseout', function () {
+                        let imagem = this.children[1]
+                        let id = this.lastChild.firstChild.dataset.id
+                        //let image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${this.id}.gif`
+                        let image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`
+                        imagem.src = image
+                    });
+                    
+                    // divPokemon.appendChild(numero)
+                    // divPokemon.appendChild(imagem)
+                    // divPokemon.appendChild(nome)
+
+                    //let divBotoes = document.createElement('div')
+                    let divBotoes = divPokemon.children[3]
+                    //divBotoes.setAttribute("id", 'botoes')
+
+                    //let botaoDetalhes = document.createElement('button')
+                    //botaoDetalhes.innerHTML = 'Detalhes'
+
+                    //let botaoAcao = document.createElement('button')
+                    let botaoAcao = divBotoes.children[0]
+                    botaoAcao.dataset.id = id
+
+                    // botaoAcao.addEventListener('click', function() {
+
+                    //   if(pokemonsNaPokedex && pokemonsNaPokedex.includes(parseInt(botaoAcao.dataset.id))) {
+                        
+                    //     alert('Pokemon Removido da Pokédex')
+                    //     let index = pokemonsNaPokedex.indexOf(parseInt(botaoAcao.dataset.id));
+                    //     pokemonsNaPokedex.splice(index, 1);
+                    //     //console.log(pokemonsNaPokedex)
+                    //     botaoAcao.innerHTML = 'Adicionar'
+                    //     botaoAcao.style.color = 'green'
+                    //     localStorage.setItem('pokemons', JSON.stringify(pokemonsNaPokedex));
+                    //   } else {
+                    //     alert('Pokemon Adicionado a Pokédex')
+                    //     pokemonsNaPokedex.push(parseInt(botaoAcao.dataset.id))
+                    //     //console.log(pokemonsNaPokedex)
+                    //     botaoAcao.innerHTML = 'Remover'
+                    //     botaoAcao.style.color = 'red'
+                    //     //localStorage.setItem('pokemons', pokemonsNaPokedex)
+                    //     localStorage.setItem('pokemons', JSON.stringify(pokemonsNaPokedex));
+                    //   } 
+                    // })
+
+                    if(pokemonsNaPokedex && pokemonsNaPokedex.includes(id)) {
+                        botaoAcao.innerHTML = 'Remover'
+                        botaoAcao.style.color = 'red'
+                    } else {
+                        botaoAcao.innerHTML = 'Adicionar'
+                        botaoAcao.style.color = 'green'
+                    }
+                })
+            }
+        }
+        
+
+        function atualizarPokemons() {
+
+            let limite = offset + limit
+
+            if(pagina === '34' || pagina === 34) {
+                limite = offset + 27
+
+                for(let i = 28; i <= 30; i++) {
+                    let divPokemon = document.getElementById(i)
+                    divPokemon.style.display = 'none'
+                }
+            } else {
+                for(let i = 28; i <= 30; i++) {
+                    let divPokemon = document.getElementById(i)
+                    divPokemon.style.display = 'grid'
+                }
+            }
+
+            for(let i = (offset + 1); i <= limite; i++) {
+
+                fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
+                .then(response => response.json())
+                .then(function(data) {
+
+                    let id = data.id
+                    let name = data.name
+                    let type = data.types[0].type.name
+                    let image = data.sprites.other.dream_world.front_default
+                    
+                    //alguns pokemons acima do #650 não tem sprite no estilo dream world
+                    if(image === null) {
+                        //alert('nulo')
+                        image = data.sprites.other.home.front_default
+                        //image = data.sprites.other['official-artwork'].front_default
+                    }
+
+                    if(image === null) {
+                        image = data.sprites.front_default
+                    }
+
+                    let divPokemon = document.getElementById(id - offset);
+
+                    let corFundo = listaCoresTipos.find((tipoPokemon) => tipoPokemon.tipo === type);
+                    divPokemon.style.backgroundColor = corFundo.cor
+                
+                    let numero = divPokemon.firstChild
+                    numero.innerHTML = `#${id}`
+
+                    let nome = divPokemon.children[2]
+                    nome.innerHTML = name.charAt(0).toUpperCase() + name.slice(1);
+
+                    let imagem = divPokemon.children[1]
+                    imagem.src = image
+                    
+                    let divBotoes = divPokemon.lastChild
+
+                    let botaoAcao = divBotoes.firstChild
+                    botaoAcao.dataset.id = id
+
+                    if(pokemonsNaPokedex.includes(id)) {
+                        botaoAcao.innerHTML = 'Remover'
+                        botaoAcao.style.color = 'red'
+                        
+                    } else {
+                        botaoAcao.innerHTML = 'Adicionar'
+                        botaoAcao.style.color = 'green'
+                        
+                    }
+
+
+                //Experimental
+                //Fazer o if dos sprites pokemon >= 650
+                divPokemon.addEventListener('mouseover', function () {
+                        let imagem = this.children[1]
+                        let id = this.lastChild.firstChild.dataset.id
+                        //console.log(id.dataset.id)
+                        console.log(id)
+                        //let image = `https://github.com/wellrccity/pokedex-html-js/blob/master/assets/img/pokemons/poke_${id}.gif?raw=true`
+                        //let image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`
+                        let image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
+                        imagem.src = image
+                        // imagem.style.width = '10vw'
+                        // imagem.style.height = '15vh'
+                    });
+
+                    divPokemon.addEventListener('mouseout', function () {
+                        let imagem = this.children[1]
+                        let id = this.lastChild.firstChild.dataset.id
+                        //let image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${this.id}.gif`
+                        imagem.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`
+
+                        if(image === null) {
+                            image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${id}.png`
+                            imagem.src = image
+                        }
+
+                        if(image === null) {
+                            image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/front-default/${id}.png`
+                        }
+                            imagem.src = image
+                    });
+
+                })
+               
+            }
+        }
+    </script>
+</body>
+</html>

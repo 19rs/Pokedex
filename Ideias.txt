@@ -1,0 +1,17 @@
+na comparação:
+
+seleciona 1 e vai pra posição de batalha1,
+
+seleciona 2 e vai pra posição de batalha2
+
+mostra os stats um a um e vai comparando
+
+depois da o resultado
+
+
+o hp vai pro lado do vencedor
+o ataque vai pro lado do vencedor e tal
+
+input com pesquisa que aumenta quando clica
+
+
