@@ -7,23 +7,33 @@
     <title>Detalhes</title>
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mina:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+
         * {
             margin: 0px;
             padding: 0px;
             box-sizing: border-box;
         }
 
+        body {
+            font-family: 'Mina', sans-serif;
+        }
+
         header {
             display: grid;
             grid-template-columns: 1fr 2fr 1fr;
-            /* position: fixed; */
             width: 100%;
             align-items: center;
             justify-items: center;
             min-height: 12vh;
             background-color: #263238;
             padding: 10px;
-            /* border-bottom: 15px solid white; */
+            border-bottom: 2px solid black;
+        }
+
+        header h1 {
+            padding-top: 5px;
         }
 
         header div:first-child {
@@ -32,6 +42,14 @@
 
         header button {
             padding: 8px 30px;
+            border: 1px solid black;
+            border-radius: 2px;
+            font-family: 'Mina', sans-serif;
+        }
+
+        header button:hover {
+            background-color: bisque;
+            cursor: pointer;
         }
 
         header div:last-child {
@@ -45,7 +63,6 @@
             row-gap: 50px;
             column-gap: 20px;
             padding: 10vh 5vw;
-            /* background-color: blue; */
         }
 
         main > div:first-child {
@@ -53,13 +70,12 @@
             height: 100%;
             grid-template-rows: 1fr 1fr;
             row-gap: 30px;
-            /* background-color: red; */
         }
 
         main > div:first-child > div:first-child {
-            border: 1px solid black;
-            border-top: 2px solid black;
-            border-left: 2px solid black;
+            border: 2px solid black;
+            /* border-top: 2px solid black; */
+            /* border-left: 2px solid black; */
             border-top-left-radius: 10px;
         }
 
@@ -71,7 +87,6 @@
         main > div:last-child {
             display: flex;
             flex-direction: column;
-            /* grid-template-rows: 1fr 1fr; */
             row-gap: 30px;
         }
 
@@ -82,27 +97,15 @@
         }
 
         main > div:last-child > div:last-child {
-            /* align-self: start; */
             border: 2px solid black;
             border-bottom-right-radius: 10px;
             height: 100%;
         }
 
         #coluna2 {
-            border: 1px solid black;
-            border-top: 2px solid black;
-            border-bottom: 2px solid black;
-            /* display: grid;
-            grid-template-rows: 50px 1fr; */
+            border: 2px solid black;
+            padding: 0px 15px;
             
-        }
-
-        #stats {
-            /* display: grid;
-            height: 90%;
-            justify-content: center;
-            align-items: center;
-            row-gap: 5px; */
         }
 
         #fotoFrente, #fotoCostas {
@@ -123,7 +126,6 @@
             display: grid;
             row-gap: 2px;
             width: 100%;
-            /* background-color: yellow; */
         }
 
         #coluna2 h2 {
@@ -139,14 +141,15 @@
         }
 
         #statName {
+            display: flex;
+            align-items: center;
             background-color: lightgray;
-            padding: 5px;
+            padding: 0px 5px;
+            padding-top: 1px;
             font-weight: semi-bold;
             border-left: 1px solid black;
             border-top: 1px solid black;
             border-bottom: 1px solid black;
-            /* border-right: 1px solid black; */
-            /* margin-right: 7px; */
         }
 
         #statValueBG {
@@ -157,13 +160,14 @@
         }
 
         #statValueBar {
-            width: 230px;
-            padding: 5px;
+            /* width: 230px; */
+            display: flex;
+            align-items: center;
+            padding: 0px 5px;
+            padding-top: 1px;
             color: white;
             font-weight: bold;
             border-right: 1px solid black;
-            /* border: 1px solid white; */
-            /* z-index: 10; */
         }
 
         #tipos {
@@ -171,15 +175,15 @@
             grid-template-columns: 1fr 1fr 1fr;
             align-items: center;
             justify-items: center;
-            /* padding: 5px; */
         }
 
         #tipos h2 {
             height: 100%;
             width: 100%;
-            padding: 10px;
-            /* justify-self: start; */
-            /* padding-right: 50px; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 3px;
             background-color: lightgray;
             border-right: 1px solid black;
         }
@@ -191,12 +195,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* color: white; */
             font-weight: 300;
+            border-left: 1px solid black;
         }
 
         #tipos p:last-child {
-            border-left: 1px solid black;
+            /* border-left: 1px solid black; */
             border-top-right-radius: 5px;
         }
 
@@ -207,9 +211,7 @@
             padding: 18px 12px;
             border-top-left-radius: 5px;
             border-bottom-left-radius: 5px;
-            /* background-color: transparent; */
             border: 1px solid gray;
-            /* border: none; */
             font-weight: bolder;
             font-size: 1rem;
             opacity: 0.6;
@@ -222,29 +224,294 @@
             padding: 18px 12px;
             border-top-right-radius: 5px;
             border-bottom-right-radius: 5px;
-            /* background-color: transparent; */
             border: 1px solid gray;
-            /* border: none; */
             font-weight: bolder;
             font-size: 1rem;
             opacity: 0.6;
         }
 
-        #nextPokemon:hover {
-            background-color: blue;
+        #nextPokemon:hover, #prevPokemon:hover {
+            background-color: gray;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+
+        #moves {
+            border: 2px solid black;
+            padding: 0px 15px;
+        }
+
+        #moves h2 {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #moveList {
+            /* background-color: red; */
+            display: grid;
+            gap: 20px;
+            /* justify-content: center; */
+            align-items: center;
+            text-align: center;
+            margin-top: 10px;
+            height: 250px;
+            overflow-y: auto;
+        }
+
+        .addPokedex {
+            color: green;
+            background-color: white;
+        }
+
+        .addPokedex:hover {
+            background-color: green;
+            color: white;
+            font-weight: bold;
+        }
+
+        .removePokedex {
+            color: red;
+            background-color: white;
+        }
+        
+        .removePokedex:hover {
+            background-color: red;
+            color: white;
+            font-weight: bold;
+        }
+
+
+        #dialogAdd {
+            font-family: 'Nova Square', sans-serif;
+            position: fixed;
+            top: 15%;
+            left: 19.3%;
+            width: 800px;
+            height: 475px;
+            border-radius: 5px;
+            /* background-image: url('./img/pokebolaOpen.png'); */
+            background-image: url('./img/pokedex.png');
+            background-repeat: no-repeat;
+            box-shadow: 2px 5px 10px gray;
+            /* background-color: rgba(0, 0, 0, 0); */
+            /* border: none; */
+        }
+
+        #dialogAdd h1 {
+            text-align: center;
+            background-color: bisque;
+            text-decoration: underline;
+            padding-top: 5px;
+            padding-bottom: 8px;
+            font-size: 1.7rem;
+        }
+
+        #divPokemonDialog {
+            position: absolute;
+            top: 185px;
+            left: 220px;
+            width: 100px;
+            height: 100px;
+            /* background-color: bisque; */
+            /* box-shadow: 2px 2px 50px gray; */
+            background: rgb(226,217,157);
+            background: radial-gradient(circle, rgba(226,217,157,0.3) 0%, rgba(182,147,63,0.1) 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #divPokemonDialog img {
+            width: 90%;
+            height: 90%;
+        }
+
+        #divPokemonName {
+            position: absolute;
+            left: 453px;
+            top: 188px;
+            width: 170px;
+            height: 63px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #dialogAdd h2 {
+            /* position: absolute;
+            left: 460px;
+            top: 200px; */
+            color: yellow;
+            font-size: 1.1rem;
+        }
+
+        #divPokemonId {
+            position: absolute;
+            left: 206px;
+            top: 382px;
+            width: 38px;
+            height: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #dialogAdd h3 {
+            color: yellow;
+            font-size: 0.9rem;
+        }
+
+        #divPokemonTipo1 {
+            position: absolute;
+            left: 453px;
+            top: 385px;
+            width: 76px;
+            height: 26px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #divPokemonTipo2 {
+            position: absolute;
+            left: 546px;
+            top: 385px;
+            width: 76px;
+            height: 26px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: yellow;
+        }
+
+        #divDialog > button {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            padding: 2px 6px;
+        }
+        
+        #divDialog > button:hover {
+            cursor: pointer;
+        }
+
+        #divPokemonStats {
+            position: absolute;
+            left: 453px;
+            top: 262px;
+            width: 170px;
+            height: 54px;
+            display: grid;
+            /* background-color: red; */
+            /* grid-template-columns: 30px 30px 30px 30px; */
+            /* grid-template-columns: 60px 100px; */
+            justify-content: center;
+            align-items: center;
+            /* column-gap: 10px;
+            row-gap: 0px; */ 
+        }
+
+        #divPokemonStats div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #divPokemonStats h3 {
+            font-size: 0.8rem;
+            color: yellow;
+        }
+
+        #prevStat {
+            position: absolute;
+            top: 321px;
+            left: 558px;
+            width: 30px;
+            height: 7px;
+            /* background-color: black; */
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        #nextStat {
+            position: absolute;
+            top: 321px;
+            left: 592px;
+            width: 30px;
+            height: 7px;
+            /* background-color: black; */
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        #prevStat:hover {
+            opacity: 1;
+        }
+
+        #nextStat:hover {
+            opacity: 1;
+        }
+
+
+        #dialogRemove {
+            font-family: 'Nova Square', sans-serif;
+            position: fixed;
+            top: 15%;
+            left: 19.3%;
+            width: 800px;
+            min-height: 475px;
+            border-radius: 5px;
+            /* background-image: url('./img/pokebolaOpen.png'); */
+            background-image: url('./img/pokedex-apagada.png');
+            background-repeat: no-repeat;
+            background-position: 10px 0px;
+            box-shadow: 2px 5px 10px gray;
+            /* background-color: rgba(0, 0, 0, 0); */
+            /* border: none; */
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+        }
+
+        #dialogRemove h1 {
+            text-align: center;
+            background-color: bisque;
+            text-decoration: underline;
+            padding-top: 5px;
+            padding-bottom: 8px;
+            font-size: 1.7rem;
+        }
+
+        #dialogRemove img {
+            align-self: end;
+            margin: 100px 80px;
+            width: 20%;
+            height: 20%;
+        }
+
+        #dialogRemove > button {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            padding: 2px 6px;
+        }
+
+        #dialogRemove > button:hover {
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <header>
         <div>
-            <button onclick="window.history.back()">Voltar</button>
+            <button onclick="voltar()">Voltar</button>
         </div>
         <div id="nomePokemon">
             <h1 id="nome"></h1>
         </div>
         <div>
-            <button id="btnAdicionarRemover" onclick="adicionarRemover()">Adicionar na Pokédex</button>
+            <!-- <button id="btnAdicionarRemover" onclick="adicionarRemover()"></button> -->
+            <button id="btnAdicionarRemover"></button>
         </div>
     </header>
     <main>
@@ -268,8 +535,9 @@
             <div id="tipos">
                 <h2>TIPOS</h2>
             </div>
-            <div>
-                Moves
+            <div id="moves">
+                <h2>MOVES</h2>
+                <div id="moveList"></div>
             </div>
         </div>
     </main>
@@ -284,15 +552,78 @@
 
     <script>
 
+        let veioDeOnde = sessionStorage.getItem('veioDeOnde')
+
         let idPokemon = sessionStorage.getItem('idPokemonDetalhe')
         //document.onload = idPokemon = sessionStorage.getItem('idPokemonDetalhe')
         console.log(idPokemon + ' oi')
 
+
+        function voltar() {
+            if(veioDeOnde && veioDeOnde === 'index') {
+                window.location.href = "index.html"
+            } 
+            //else if(veioDeOnde && veioDeOnde === 'index') {
+            else {
+                //window.location.href = "index.html"
+                window.history.back()
+            }
+        }
+
+        let pokemonsNaPokedex = []
+        let index = ''
+
+        if(localStorage.getItem('pokemons')) {
+            pokemonsNaPokedex = JSON.parse(localStorage.getItem('pokemons'))
+            pokemonsNaPokedex.sort((a, b) => a - b);
+            index = pokemonsNaPokedex.indexOf(parseInt(idPokemon))
+        }
+
+        console.log(index + ' indeex')
+
+        let statsPokemonPokedexDialog = []
+        let indexStatPokemon = 0
+        // let nome_pokemon = ''
+        // let tipos_pokemon = []
+        //let stats_pokemon = []
+
+        // function trocarStat(o) {
+        //     let statPokemon = document.getElementById('statPokemon')
+        //     console.log('deu ' + statPokemon)
+        //     o === '+' ? indexStatPokemon++ : indexStatPokemon--
+
+        //     if(indexStatPokemon > 5) {
+        //         indexStatPokemon = 0
+        //     } else if (indexStatPokemon < 0) {
+        //         indexStatPokemon = 5
+        //     }
+
+        //     statPokemon.innerHTML = statsPokemonPokedexDialog[indexStatPokemon]
+        // }
+
+
         function trocarPokemon(o) {
-            o === '+' ? idPokemon++ : idPokemon--
+            console.log(veioDeOnde)
+            
+            if(veioDeOnde === 'index') {
+               o === '+' ? idPokemon++ : idPokemon--
+
+               sessionStorage.setItem('idPokemonDetalhe', idPokemon)
+
+            } else if(veioDeOnde === 'pokedex') {
+                
+                console.log(pokemonsNaPokedex)
+                //pokemonsNaPokedex.sort((a, b) => a - b);
+                //console.log(index + ' indeex' )
+
+                o === '+' ? index++ : index--
+
+                sessionStorage.setItem('idPokemonDetalhe', pokemonsNaPokedex[index])
+                console.log('aquieee ' + pokemonsNaPokedex[index])
+            }
 
             //idPokemon++
-            sessionStorage.setItem('idPokemonDetalhe', idPokemon)
+            //sessionStorage.setItem('idPokemonDetalhe', idPokemon)
 
             let header = document.getElementsByTagName('header')
             header[0].style.display = 'none'
@@ -308,32 +639,54 @@
         document.onload = mostrarEsconderBotoes()
 
         function mostrarEsconderBotoes() {
-            if(idPokemon === '1') {
-                let prevButton = document.getElementById('prevPokemon')
-                prevButton.setAttribute('disabled', 'disabled')
-            } else if(idPokemon === '1017') {
-                let nextButton = document.getElementById('nextPokemon')
-                nextButton.setAttribute('disabled', 'disabled')
+            if(sessionStorage.getItem('veioDeOnde') === 'index') {
+                if(idPokemon === '1') {
+                    let prevButton = document.getElementById('prevPokemon')
+                    // prevButton.setAttribute('disabled', 'disabled')
+                    prevButton.style.display = 'none'
+                } else if(idPokemon === '1017') {
+                    let nextButton = document.getElementById('nextPokemon')
+                    // nextButton.setAttribute('disabled', 'disabled')
+                    nextButton.style.display = 'none'
+                }
+            } else if(sessionStorage.getItem('veioDeOnde') === 'pokedex') {
+                if(index === 0) {
+                    //alert('inicio')
+                    let prevButton = document.getElementById('prevPokemon')
+                    prevButton.style.display = 'none'
+                } else {
+                    let prevButton = document.getElementById('prevPokemon')
+                    prevButton.style.display = 'block'
+                }
+                if(index === pokemonsNaPokedex.length - 1) {
+                    //alert('final')
+                    let nextButton = document.getElementById('nextPokemon')
+                    nextButton.style.display = 'none'
+                    nextButton.style.backgroundColor = 'red'
+                } else {
+                    let nextButton = document.getElementById('nextPokemon')
+                    nextButton.style.display = 'block'
+                }
             }
         }
 
         let listaCoresTipos = [
             {tipo: 'bug', cor: 'yellowgreen', cor2: 'rgba(154, 205, 50, 0.8)'},
-            {tipo: 'water', cor: '#0040ff', cor2: 'rgba(0, 64, 255, 0.8)'},
-            {tipo: 'electric', cor: 'yellow', cor2: 'rgba(255, 255, 0, 0.7)'},
+            {tipo: 'water', cor: '#0040ff', cor2: 'rgba(0, 64, 255, 0.9)'},
+            {tipo: 'electric', cor: 'yellow', cor2: 'rgba(255, 255, 0, 0.6)'},
             {tipo: 'grass', cor: '#009900', cor2: 'rgba(0, 153, 0, 0.8)'},
             {tipo: 'fire', cor: '#ff0000', cor2: 'rgba(255, 0, 0, 0.8)'},
             {tipo: 'normal', cor: '#ffb366', cor2: 'rgba(255, 179, 102, 0.8)'},
             {tipo: 'ground', cor: '#ff531a', cor2: 'rgba(255, 83, 26, 0.8)'},
             {tipo: 'poison', cor: '#cc00cc', cor2: 'rgba(204, 0, 204, 0.8)'},
-            {tipo: 'ghost', cor: '#660066', cor2: 'rgba(102, 0, 102, 0.8)'},
+            {tipo: 'ghost', cor: '#660066', cor2: 'rgba(102, 0, 102, 0.9)'},
             {tipo: 'dragon', cor: 'Coral', cor2: 'rgba(255, 127, 80, 0.8)'},
-            {tipo: 'rock', cor: 'gray', cor2: 'rgba(128, 128, 128, 0.8)'},
-            {tipo: 'psychic', cor: 'pink', cor2: 'rgba(255, 192, 203, 0.8)'},
+            {tipo: 'rock', cor: 'gray', cor2: 'rgba(128, 128, 128, 0.85)'},
+            {tipo: 'psychic', cor: 'pink', cor2: 'rgba(255, 192, 203, 0.7)'},
             {tipo: 'ice', cor: '#80d4ff', cor2: 'rgba(128, 212, 255, 0.8)'},
-            {tipo: 'fighting', cor: 'brown', cor2: 'rgba(165, 42, 42, 0.8)'},
-            {tipo: 'fairy', cor: 'Bisque', cor2: 'rgba(255, 228, 196, 0.8)'},
-            {tipo: 'dark', cor: '#515151', cor2: 'rgba(81, 81, 81, 0.8)'},
+            {tipo: 'fighting', cor: 'brown', cor2: 'rgba(165, 42, 42, 0.9)'},
+            {tipo: 'fairy', cor: 'Bisque', cor2: 'rgba(255, 228, 196, 0.7)'},
+            {tipo: 'dark', cor: '#515151', cor2: 'rgba(81, 81, 81, 0.9)'},
             {tipo: 'steel', cor: 'silver', cor2: 'rgba(192, 192, 192, 0.8)'},
             {tipo: 'flying', cor: 'LightBlue', cor2: 'rgba(173, 216, 230, 0.8)'}
         ]
@@ -361,25 +714,69 @@
                     let fotoFrente = document.getElementById('fotoFrente')
                     let imgFrente = document.createElement('img')
                     //imgFrente.src = data.sprites.other.dream_world.front_default
-                    //imgFrente.src = data.sprites.versions['generation-v']['black-white'].animated.front_default
-                    imgFrente.src = data.sprites.versions['generation-v']['black-white'].front_default
+
+                    if(idPokemon < 650) {
+                        imgFrente.src = data.sprites.versions['generation-v']['black-white'].animated.front_default
+                        // imgFrente.style.width = '50%'
+                        // imgFrente.style.maxHeight = '150px'
+                    } else if(idPokemon < 899) {
+                        imgFrente.src = data.sprites.versions['generation-v']['black-white'].front_default    
+                        // imgFrente.style.width = '80%'
+                    } else {
+                        imgFrente.src = data.sprites.front_default    
+                        // imgFrente.style.width = '80%'
+                    }
+
+                    imgFrente.style.maxHeight = '125px'
+                    imgFrente.style.maxWidth = '125px'
+                    
+                    // imgFrente.src = data.sprites.versions['generation-v']['black-white'].front_default
                     fotoFrente.appendChild(imgFrente)
 
-                    fotoFrente.style.backgroundColor = corFundo.cor2
+                    //fotoFrente.style.backgroundColor = corFundo.cor2
                     // fotoFrente.style.opacity = '0.8'
+                    fotoFrente.style.background = `radial-gradient(circle, ${corFundo.cor2} 50%, ${corFundo.cor} 80%)`;
 
                     let fotoCostas = document.getElementById('fotoCostas')
                     let imgCostas = document.createElement('img')
-                    //imgCostas.src = data.sprites.versions['generation-v']['black-white'].animated.back_default
-                    imgCostas.src = data.sprites.versions['generation-v']['black-white'].back_default
+                    
+                    if(idPokemon < 650) {
+                        imgCostas.src = data.sprites.versions['generation-v']['black-white'].animated.back_default
+                        // imgCostas.style.width = '50%'
+                        // imgCostas.style.maxHeight = '150px'
+                    } else if(idPokemon < 899) {
+                        imgCostas.src = data.sprites.versions['generation-v']['black-white'].back_default    
+                        // imgCostas.style.width = '80%'
+                    } else {
+                        imgCostas.src = data.sprites.back_default    
+                        // imgCostas.style.width = '80%'
+                    }
+
+                    imgCostas.style.maxHeight = '125px'
+                    imgCostas.style.maxWidth = '125px'
+
+                    if(imgCostas.src.includes('null')) {
+                        // fotoCostas.style.display = 'none'
+                        imgCostas.style.display = 'none'
+                    }
+
+                    // imgCostas.src = data.sprites.versions['generation-v']['black-white'].back_default
                     fotoCostas.appendChild(imgCostas)
                     
-                    fotoCostas.style.backgroundColor = corFundo.cor2
+                    // fotoCostas.style.backgroundColor = corFundo.cor2
                     // fotoCostas.style.opacity = '0.8'
+                    fotoCostas.style.background = `radial-gradient(circle, ${corFundo.cor2} 50%, ${corFundo.cor} 80%)`;
 
 
+                    /*if(image === null) {
+                            image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${id}.png`
+                            imagem.src = image
+                        }
 
-
+                        if(image === null) {
+                            image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/front-default/${id}.png`
+                        }
+                            imagem.src = image
                     //MouseOver - MouseOut
                     fotoFrente.addEventListener('mouseover', function () {
                         imgFrente.src = data.sprites.versions['generation-v']['black-white'].animated.front_default
@@ -400,7 +797,7 @@
                         imgCostas.src = data.sprites.versions['generation-v']['black-white'].back_default
                         imgCostas.style.width = '80%'
                     });
-
+                    */
 
 
 
@@ -415,6 +812,7 @@
                         let statNome = document.createElement('p')
                         statNome.id = 'statName'
                         statNome.innerHTML = stats.stat.name.toUpperCase() + ': '
+                        
                         
                         let statValueBG = document.createElement('div')
                         statValueBG.id = 'statValueBG'
@@ -432,6 +830,8 @@
 
                         statsList.append(stat)
 
+                        //pro dialog
+                        statsPokemonPokedexDialog.push(stats.stat.name.toUpperCase() + ': ' + stats.base_stat)
                     });
 
                     //Tipos
@@ -461,8 +861,291 @@
                             textoTipos.innerHTML = 'TIPO'
                     }
 
+                    //Moves
+                    let movesDiv = document.getElementById('moves')
+                    movesDiv.style.backgroundColor = corFundo.cor2
+
+                    let moveList = document.getElementById('moveList')
+                    let i = 1
+
+                    data.moves.forEach(move => {
+                        //console.log(move)
+                        let moveNames = document.createElement('p')
+                        moveNames.innerHTML += move.move.name.charAt(0).toUpperCase() +  move.move.name.slice(1)
+                        moveNames.innerHTML = moveNames.innerHTML.split("-").join(" ")
+                        //console.log(move.move.name.split("-").join(" "))
+                        // moveNames.style.width = '100%'
+                        moveNames.style.padding = '2px'
+
+       //                 i % 2 === 0 ? moveNames.style.backgroundColor = corFundo.cor2 : moveNames.style.backgroundColor = corFundo.cor
+                        moveNames.style.backgroundColor = corFundo.cor2
+                        i++;
+                        moveList.appendChild(moveNames)
+                    });
+                    
+                    let botaoAdicionarRemover = document.getElementById('btnAdicionarRemover')
+
+                    if(pokemonsNaPokedex.includes(parseInt(idPokemon))) {
+                        botaoAdicionarRemover.innerHTML = '<b>Remover</b> da Pokédex'
+                        // botaoAdicionarRemover.style.color = 'red'
+                        botaoAdicionarRemover.classList.add("removePokedex");
+                    } else {
+                        botaoAdicionarRemover.innerHTML = '<b>Adicionar</b> na Pokédex'
+                        //botaoAdicionarRemover.style.color = 'green'
+                        botaoAdicionarRemover.classList.add("addPokedex");
+                    }
                 })
         }
+
+        // function adicionarRemover() {
+
+            let botaoAdicionarRemover = document.getElementById('btnAdicionarRemover')
+
+            botaoAdicionarRemover.addEventListener('click', function() {
+
+                //Remover Pokemon
+            if(pokemonsNaPokedex.includes(parseInt(idPokemon))) {
+                pokemonsNaPokedex.splice(index, 1);
+                localStorage.setItem('pokemons', JSON.stringify(pokemonsNaPokedex));
+
+
+                let dialogRemove = document.createElement('dialog')
+                document.body.appendChild(dialogRemove)
+                // if(veioDeOnde === 'pokedex') {
+                //     index = 0
+
+                    //chamar dialog
+                    //alert('removido')
+                    //let dialogRemove = document.createElement('dialog')
+                        dialogRemove.id = ('dialogRemove')
+                        // dialogRemove.style.width = '800px'
+                        // dialogRemove.style.heigth = '800px'
+//console.log(dialogoRemove + ' aqui' )
+                        let h1 = document.createElement('h1')
+                        h1.id = 'textoDialog'
+                        // h1.innerHTML = this.parentNode.parentElement.children[1].innerHTML + ' removido da Pokédex!'
+                        let nomePokemon = this.parentNode.parentElement.children[1].innerText
+                        //console.log(nomePokemon.replace(`#${idPokemon} - `, ""))
+
+                        nomePokemon = nomePokemon.replace(`#${idPokemon} - `, "")
+                        nomePokemon = nomePokemon.charAt(0) + nomePokemon.substring(1).toLowerCase();
+                        h1.innerHTML = nomePokemon + ' removido da Pokédex!'
+                        
+
+                        let img = document.createElement('img')
+
+                        //depois pegar pelo sprite da imgFrente
+                        if(parseInt(idPokemon) < 650) {
+                            img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${idPokemon}.gif`
+                        } else if(idPokemon < 899) {
+                            img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/${idPokemon}.png`
+                        } else {
+                            img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idPokemon}.png`
+                        }
+
+                        let closeButton = document.createElement('button')
+                        closeButton.innerHTML = 'x'
+
+                        closeButton.addEventListener('click', function() {
+                            //console.log(this.parentElement)
+
+                            this.parentElement.remove()
+
+                            if(veioDeOnde === 'pokedex') {
+                                index = 0
+                                location.reload()
+                                //window.history.back()
+                                window.location.href = "pokedex.html"
+                                //no surge nao atualiza automatico se usar o window.history.back() como no liveServer ou direto no arquivo
+                            }
+                        })
+
+                        dialogRemove.appendChild(h1)
+                        dialogRemove.appendChild(img)
+                        dialogRemove.appendChild(closeButton)
+
+                        document.body.appendChild(dialogRemove)
+
+                        dialogRemove.showModal()
+
+ 
+
+
+                    // location.reload()
+                    // window.history.back()
+                    
+                //}
+                //chamar dialog
+                //alert('removido')
+
+                botaoAdicionarRemover.innerHTML = '<b>Adicionar</b> na Pokédex'
+                // botaoAdicionarRemover.style.color = 'green'
+                botaoAdicionarRemover.setAttribute('class' ,"addPokedex")
+            } else {
+                pokemonsNaPokedex.push(parseInt(idPokemon))
+        
+                botaoAdicionarRemover.innerHTML = '<b>Remover</b> da Pokédex'
+                // botaoAdicionarRemover.style.color = 'red'
+                botaoAdicionarRemover.setAttribute('class' ,"removePokedex")
+
+                localStorage.setItem('pokemons', JSON.stringify(pokemonsNaPokedex));
+
+                //depois criar variaveis globais para pegar os dados direito
+                let nome_pokemon = this.parentNode.parentElement.children[1].innerText
+                nome_pokemon = nome_pokemon.replace(`#${idPokemon} - `, "")
+
+                //dialog add
+                let dialogAdd = document.createElement('dialog')
+                dialogAdd.id = 'dialogAdd'
+                document.body.appendChild(dialogAdd)
+
+                let divDialog = document.createElement('div')
+                divDialog.id = 'divDialog'
+
+                dialogAdd.appendChild(divDialog)
+
+                let textoDialog = document.createElement('h1')
+                textoDialog.id = 'textoDialog'
+                textoDialog.innerHTML = 'Pokémon Adicionado à Pokédex!'
+
+                divDialog.appendChild(textoDialog)
+
+                let buttonClose = document.createElement('button')
+                buttonClose.innerHTML = 'x'
+                //buttonClose.setAttribute('onclick', 'dialog.close()')
+
+                divDialog.appendChild(buttonClose)
+                
+                buttonClose.addEventListener('click', function() {
+                    this.parentElement.parentElement.remove()
+                    //console.log(this.parentElement.parentElement)
+                })
+
+                let divPokemonDialog = document.createElement('div')
+                divPokemonDialog.id = 'divPokemonDialog'
+
+                let fotoFrente = document.getElementById('fotoFrente')
+
+                //console.log(fotoFrente.children[0].src)
+
+                let imgPokemon = document.createElement('img')
+                imgPokemon.src = fotoFrente.children[0].src
+
+                divPokemonDialog.appendChild(imgPokemon)
+
+                divDialog.appendChild(divPokemonDialog)
+
+                let divPokemonName = document.createElement('div')
+                divPokemonName.id = 'divPokemonName'
+                
+                //console.log(this.parentNode.parentElement.children[1].innerText)
+                let nomePokemon = document.createElement('h2')
+                nomePokemon.id = 'nomePokemon'
+                
+                nomePokemon.innerHTML = nome_pokemon
+                // nomePokemon.innerHTML = nomePokemon.toUpperCase()
+
+                divPokemonName.appendChild(nomePokemon)
+                divDialog.appendChild(divPokemonName)
+
+                
+                let divPokemonId = document.createElement('div')
+                divPokemonId.id = 'divPokemonId'
+
+                let pokemonIdDialog = document.createElement('h3')
+                pokemonIdDialog.id = 'pokemonIdDialog'
+                pokemonIdDialog.innerHTML = idPokemon
+
+                divPokemonId.appendChild(pokemonIdDialog)
+                divDialog.appendChild(divPokemonId)
+
+
+                let tipos = document.getElementById('tipos')
+
+                let divPokemonTipo1 = document.createElement('div')
+                divPokemonTipo1.id = 'divPokemonTipo1'
+
+                let pokemonTipo1 = document.createElement('h3')
+                pokemonTipo1.id = 'pokemonTipo1'
+
+                pokemonTipo1.innerHTML = tipos.children[1].innerHTML
+
+                divPokemonTipo1.appendChild(pokemonTipo1)
+                divDialog.appendChild(divPokemonTipo1)
+
+                if(tipos.children[2]) {
+                    let divPokemonTipo2 = document.createElement('div')
+                    divPokemonTipo2.id = 'divPokemonTipo2'
+
+                    let pokemonTipo2 = document.createElement('h3')
+                    pokemonTipo2.id = 'pokemonTipo2'
+
+                    pokemonTipo2.innerHTML = tipos.children[2].innerHTML
+
+                    divPokemonTipo2.appendChild(pokemonTipo2)
+                    divDialog.appendChild(divPokemonTipo2)
+                }
+                
+
+                let divPokemonStats = document.createElement('div')
+                divPokemonStats.id = 'divPokemonStats'
+
+                let statPokemon = document.createElement('h3')
+                statPokemon.id = 'statPokemon'
+                statPokemon.innerHTML = statsPokemonPokedexDialog[0]
+
+                divPokemonStats.appendChild(statPokemon)
+                divDialog.appendChild(divPokemonStats)
+
+                let buttonPrevStat = document.createElement('button')
+                buttonPrevStat.id = 'prevStat'
+                //buttonPrevStat.setAttribute('onclick', 'trocarStat(-)')
+
+                buttonPrevStat.addEventListener('click', function() {
+                    let statPokemon = document.getElementById('statPokemon')
+                    //console.log('deu ' + statPokemon)
+                    indexStatPokemon--
+
+                    if(indexStatPokemon > 5) {
+                        indexStatPokemon = 0
+                    } else if (indexStatPokemon < 0) {
+                        indexStatPokemon = 5
+                    }
+
+                    statPokemon.innerHTML = statsPokemonPokedexDialog[indexStatPokemon]
+                })
+                
+                let buttonNextStat = document.createElement('button')
+                buttonNextStat.id = 'nextStat'
+                //buttonNextStat.setAttribute('onclick', 'trocarStat(+)')
+
+                buttonNextStat.addEventListener('click', function() {
+                    let statPokemon = document.getElementById('statPokemon')
+                    //console.log('deu ' + statPokemon)
+                    indexStatPokemon++
+
+                    if(indexStatPokemon > 5) {
+                        indexStatPokemon = 0
+                    } else if (indexStatPokemon < 0) {
+                        indexStatPokemon = 5
+                    }
+
+                    statPokemon.innerHTML = statsPokemonPokedexDialog[indexStatPokemon]
+                })
+
+                dialogAdd.appendChild(buttonPrevStat)
+                dialogAdd.appendChild(buttonNextStat)
+
+                dialogAdd.showModal()
+
+            }
+
+
+
+
+            })
+            
+        
     </script>
 </body>
 </html>

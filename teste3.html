@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        #dialog {
+            width: 800px;
+            height: 800px;
+            background-color: white;
+            border: 2px solid black;
+        }
+
+        #listaDialog {
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="carregarModal()">Abrir</button>
+    <!-- <dialog id="dialog">
+        <button onclick="dialog.close()">x</button>
+        <div id="listaDialog"></div>
+        <h2 id="idPokemon"></h2>
+        <h1 id="nomePokemon"></h1>
+        <img src="" id="fotoPokemon">
+    </dialog> -->
+
+    <script>
+        function carregarModal() {
+
+            let dialog = document.createElement('dialog')
+            dialog.id = 'dialog'
+            
+            let closeButton = document.createElement('button')
+            closeButton.innerHTML = 'x'
+            closeButton.setAttribute('onclick', 'fecharDialog()')
+
+            let listaDiv = document.createElement('div')
+            listaDiv.id = 'listaDialog'
+
+            dialog.appendChild(closeButton)
+            dialog.appendChild(listaDiv)
+
+            document.body.appendChild(dialog)
+
+            dialog.showModal()
+            //dialog.showModal()
+
+            console.log('abriu')
+
+            let listaDialog = document.getElementById('listaDialog')
+
+            fetch('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0')
+            .then(response => response.json())
+            .then(function(data) {
+
+                data.results.forEach(pokemon => {
+
+                    fetch(pokemon.url)
+                    .then(response => response.json())
+                    .then(function(pokemonData) {
+
+                        //if(!array.includes(pokemonData.id)) {
+                            let h1 = document.createElement('h1')
+                            h1.innerHTML = pokemonData.id + ' - ' + pokemonData.name
+                            listaDialog.appendChild(h1)
+                        //}
+                    })
+                })
+            })
+        }
+
+        function fecharDialog() {
+            let dialog = document.getElementById('dialog')
+            dialog.remove()
+        }
+    </script>
+</body>
+</html>

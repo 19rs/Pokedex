@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparação</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mina:wght@400;700&display=swap');
+
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Mina', sans-serif;
+        }
+
+        ul {
+            list-style: none;
+            padding: 15px;
+        }
+
+        li {
+            /* width: 685px; */
+            width: 401px;
+            background-color: gray;
+            margin-bottom: 10px;
+            /* padding: 5px; */
+            display: grid;
+            grid-template-columns: 135px 130px 135px;
+            justify-items: center;
+            align-items: center;
+            font-size: 0.8rem;
+            border: 1px solid black;
+        }
+        
+        li > p {
+            background-color: lightgray;
+            width: 100%;
+            text-align: center;
+            padding: 5px;
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+        }
+
+        /* li > div {
+            font-size: 0.8rem;
+            font-weight: bold;
+        } */
+
+        .statPokemon1 {
+            /* width: 100px; */
+            padding: 5px 0px;
+            border-left: 1px solid black;
+            /* background-color: green; */
+            justify-self: end;
+            display: flex;
+            justify-content: end;
+        }
+
+        .statPokemon1 > p {
+            margin-right: 10px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .statPokemon2 {
+            width: 100px;
+            padding: 5px 0px;
+            border-right: 1px solid black;
+            /* background-color: lightblue; */
+            justify-self: start;
+            display: flex;
+            justify-content: start;
+        }
+
+        .statPokemon2 > p {
+            margin-left: 10px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .total {
+            width: 100%;
+            padding: 5px 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            /* gap: 50px; */
+            margin: 0px 20px;
+            background-color: bisque;
+            height: 90vh;
+        }
+
+        main > div {
+            padding: 20px;
+            border: 2px solid black;
+            display: grid;
+            align-items: end;
+            justify-items: center;
+        }
+
+        #pokemon1 {
+            background-color: red;
+            display: grid;
+            grid-template-rows: 100px 100px 1fr;
+            align-items: center;
+            /* justify-content: center; */
+            /* align-content: center; */
+        }
+
+        #pokemon1 img {
+             /* max-height: 500px; */
+             height: 250px;
+             width: 250px;
+         }
+
+         
+        #pokemon2 {
+            background-color: blue;
+            display: grid;
+            grid-template-rows: 100px 100px 1fr;
+            align-items: center;
+        }
+
+        #pokemon2 img {
+            /* max-height: 500px; */
+            height: 250px;
+            width: 250px;
+        }
+
+        #comparacao {
+            /* background-color: bisque; */
+            background-color: beige;
+
+        }
+
+        #totalPokemon2 {
+            width: 99%;
+        }
+
+        input {
+            padding: 8px;
+            width: 70px;
+        }
+
+        .selectPokemon {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .selectPokemon button {
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div id="pokemon1">
+            <div class="selectPokemon">
+                <button id="btnPrevPokemon1" onclick="prevPokemon1()"><</button>
+                <div id="selectPokemon1">
+                    <input type="number" id="inputPokemon1" min="1" max="1017" value="1">
+                </div>
+                <button id="btnNextPokemon1" onclick="nextPokemon1()">></button>
+            </div>
+            <div>
+                <h1 id="nomePokemon1"></h1>
+            </div>
+
+            <div id="pokemonCard1">
+                <img src="" alt="Pokemon 1" id="imagemPokemon1">
+            </div>
+
+        </div>
+
+        <div id="comparacao">
+            <ul id="listaStats">
+                <li>
+                    <div class="statPokemon1">
+                        <p id="hpPokemon1"></p>
+                    </div>
+                    <p>HP</p>
+                    <div class="statPokemon2">
+                        <p id="hpPokemon2"></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="statPokemon1">
+                        <p id="attackPokemon1"></p>
+                    </div>
+                    <p>ATTACK</p>
+                    <div class="statPokemon2">
+                        <p id="attackPokemon2"></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="statPokemon1">
+                        <p id="defensePokemon1"></p>
+                    </div>
+                    <p>DEFENSE</p>
+                    <div class="statPokemon2">
+                        <p id="defensePokemon2"></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="statPokemon1">
+                        <p id="specialAttackPokemon1"></p>
+                    </div>
+                    <p>SPECIAL ATTACK</p>
+                    <div class="statPokemon2">
+                        <p id="specialAttackPokemon2"></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="statPokemon1">
+                        <p id="specialDefensePokemon1"></p>
+                    </div>
+                    <p>SPECIAL DEFENSE</p>
+                    <div class="statPokemon2">
+                        <p id="specialDefensePokemon2"></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="statPokemon1">
+                        <p id="speedPokemon1"></p>
+                    </div>
+                    <p>SPEED</p>
+                    <div class="statPokemon2">
+                        <p id="speedPokemon2"></p>
+                    </div>
+                </li>
+                <li>
+                    <div class="total" id="totalPokemon1">
+                        <p id="totalPokemon1Value"></p>
+                    </div>
+                    <p>TOTAL</p>
+                    <div class="total" id="totalPokemon2">
+                        <p id="totalPokemon2Value"></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="pokemon2">
+            
+            <div class="selectPokemon">
+                <button id="btnPrevPokemon2" onclick="prevPokemon2()"><</button>
+                <div id="selectPokemon2">
+                    <input type="number" id="inputPokemon2" min="1" max="1017" value="1">
+                </div>
+                <button id="btnNextPokemon2" onclick="nextPokemon2()">></button>
+            </div>
+
+            <div>
+                <h1 id="nomePokemon2"></h1>
+            </div>
+            
+            <div id="pokemonCard2">
+                <img src="" alt="Pokemon 2" id="imagemPokemon2">
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        
+        let pokemon1 = ''
+        sessionStorage.getItem('pokemon1') ? pokemon1 = sessionStorage.getItem('pokemon1') : pokemon1 = 1
+
+        let inputPokemon1 = document.getElementById('inputPokemon1')
+        inputPokemon1.value = pokemon1
+
+        inputPokemon1.addEventListener('change', function(e) {
+            if(e.target.value < 1 || e.target.value > 1017) {
+                alert('Pokémon não existe')
+                return
+            } else {
+                pokemon1 = parseInt(e.target.value)
+                sessionStorage.setItem('pokemon1', pokemon1)
+                
+                location.reload()
+            }
+        })
+
+        let pokemon2 = ''
+        sessionStorage.getItem('pokemon2') ? pokemon2 = sessionStorage.getItem('pokemon2') : pokemon2 = 4
+
+        let inputPokemon2 = document.getElementById('inputPokemon2')
+        inputPokemon2.value = pokemon2
+
+        inputPokemon2.addEventListener('change', function(e) {
+            if(e.target.value < 1 || e.target.value > 1017) {
+                alert('Pokémon não existe')
+                return
+            } else {
+                pokemon2 = parseInt(e.target.value)
+                sessionStorage.setItem('pokemon2', pokemon2)
+                
+                location.reload()
+            }
+        })
+
+        document.onload = habilitarDesabilitarBotoes()
+
+        function habilitarDesabilitarBotoes() {
+            let btnPrevPokemon1 = document.getElementById('btnPrevPokemon1')
+            let btnPrevPokemon2 = document.getElementById('btnPrevPokemon2')
+
+            if(pokemon1 === '1' || pokemon1 === 1) {
+                btnPrevPokemon1.setAttribute('disabled', 'disabled')
+            } else {
+                btnPrevPokemon1.removeAttribute('disabled')
+            }
+
+            if(pokemon2 === '1' || pokemon2 === 1) {
+                btnPrevPokemon2.setAttribute('disabled', 'disabled')
+            } else {
+                btnPrevPokemon2.removeAttribute('disabled')
+            }
+
+            let btNextPokemon1 = document.getElementById('btnNextPokemon1')
+            let btnNextPokemon2 = document.getElementById('btnNextPokemon2')
+
+            if(pokemon1 === '1017' || pokemon1 === 1017) {
+                btNextPokemon1.setAttribute('disabled', 'disabled')
+            } else {
+                btNextPokemon1.removeAttribute('disabled')
+            }
+
+            if(pokemon2 === '1017' || pokemon2 === 1017) {
+                btnNextPokemon2.setAttribute('disabled', 'disabled')
+            } else {
+                btnNextPokemon2.removeAttribute('disabled')
+            }
+        }
+
+        function prevPokemon1() {
+            pokemon1--;
+            sessionStorage.setItem('pokemon1', pokemon1)
+
+            inputPokemon1.value = pokemon1
+            location.reload()
+        }
+
+        function nextPokemon1() {
+            pokemon1++;
+            sessionStorage.setItem('pokemon1', pokemon1)
+
+            inputPokemon1.value = pokemon1
+            location.reload()
+        }
+
+        function prevPokemon2() {
+            pokemon2--;
+            sessionStorage.setItem('pokemon2', pokemon2)
+
+            inputPokemon2.value = pokemon2
+            location.reload()
+        }
+
+        function nextPokemon2() {
+            pokemon2++;
+            sessionStorage.setItem('pokemon2', pokemon2)
+
+            inputPokemon2.value = pokemon2
+            location.reload()
+        }
+
+        let statsPokemon1 = []
+        let totalPokemon1 = 0
+
+        let statsPokemon2 = []
+        let totalPokemon2 = 0
+
+        let listaStats = document.getElementById('listaStats')
+
+        let listaCoresTipos = [
+            {tipo: 'bug', cor: 'yellowgreen'},
+            {tipo: 'water', cor: '#0040ff'},
+            {tipo: 'electric', cor: 'yellow'},
+            {tipo: 'grass', cor: '#009900'},
+            {tipo: 'fire', cor: '#ff0000'},
+            {tipo: 'normal', cor: '#ffb366'},
+            {tipo: 'ground', cor: '#ff531a'},
+            {tipo: 'poison', cor: '#cc00cc'},
+            {tipo: 'ghost', cor: '#660066'},
+            {tipo: 'dragon', cor: 'Coral'},
+            {tipo: 'rock', cor: 'gray'},
+            {tipo: 'psychic', cor: 'pink'},
+            {tipo: 'ice', cor: '#80d4ff'},
+            {tipo: 'fighting', cor: 'brown'},
+            {tipo: 'fairy', cor: 'Bisque'},
+            {tipo: 'dark', cor: '#515151'},
+            {tipo: 'steel', cor: 'silver'},
+            {tipo: 'flying', cor: 'LightBlue'}
+        ]
+
+        fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon1}`)
+            .then(response => response.json())
+            .then(function(data) {
+                let imagemPokemon1 = document.getElementById('imagemPokemon1')
+
+                if(pokemon1 < 650) {
+                    imagemPokemon1.src = data.sprites.other.dream_world.front_default
+                } else if(pokemon1 < 899) {
+                    imagemPokemon1.src = data.sprites.other.home.front_default
+                } else {
+                    imagemPokemon1.src = data.sprites.front_default
+                }
+                
+                let nomePokemon1 = document.getElementById('nomePokemon1')
+                nomePokemon1.innerHTML = data.name.charAt(0).toUpperCase() + data.name.slice(1);
+
+                let tipo = data.types[0].type.name
+                let divPokemon = document.getElementById('pokemon1')
+
+                let corFundo = listaCoresTipos.find((tipoPokemon) => tipoPokemon.tipo === tipo);
+                divPokemon.style.backgroundColor = corFundo.cor
+
+                for(let i = 0; i < 6; i++) {
+                    let divStat = listaStats.children[i].children[0]
+                    let tamanho = (data.stats[i].base_stat * 135) / 255
+                    divStat.style.width = `${tamanho}px`
+
+                    let statP = listaStats.children[i].children[0].children[0]
+                    statP.innerHTML = data.stats[i].base_stat
+                 
+                    statsPokemon1.push(data.stats[i].base_stat)
+                    totalPokemon1 += parseInt(data.stats[i].base_stat)
+                }
+
+                let totalPokemon = document.getElementById('totalPokemon1')
+                totalPokemon.innerHTML = totalPokemon1
+
+                console.log(statsPokemon1)
+                console.log(totalPokemon1)
+
+                checarVencedor()
+ 
+            }).then(
+
+                fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon2}`)
+                .then(response => response.json())
+                .then(function(data) {
+                    let imagemPokemon2 = document.getElementById('imagemPokemon2')
+
+                    if(pokemon2 < 650) {
+                        imagemPokemon2.src = data.sprites.other.dream_world.front_default
+                    } else if(pokemon2 < 899) {
+                        imagemPokemon2.src = data.sprites.other.home.front_default
+                    } else {
+                        imagemPokemon2.src = data.sprites.front_default
+                    }
+                
+                    let nomePokemon2 = document.getElementById('nomePokemon2')
+                    nomePokemon2.innerHTML = data.name.charAt(0).toUpperCase() + data.name.slice(1);
+
+                    let tipo = data.types[0].type.name
+                    let divPokemon = document.getElementById('pokemon2')
+
+                    let corFundo = listaCoresTipos.find((tipoPokemon) => tipoPokemon.tipo === tipo);
+                    divPokemon.style.backgroundColor = corFundo.cor
+
+                    for(let i = 0; i < 6; i++) {
+                        //console.log(listaStats.children[i].children[0])
+                        //console.log(listaStats.children[i].children[0].children[0])
+                        //console.log(data.stats[i].base_stat)
+
+                        //divStat.style.width = data.stats[i].stats.base_stat
+                        let divStat = listaStats.children[i].children[2]
+                        let tamanho = (data.stats[i].base_stat * 135) / 255
+                        //console.log(tamanho)
+                        divStat.style.width = `${tamanho}px`
+
+                        let statP = listaStats.children[i].children[2].children[0]
+                        statP.innerHTML = data.stats[i].base_stat
+                    
+                        statsPokemon2.push(data.stats[i].base_stat)
+                        totalPokemon2 += parseInt(data.stats[i].base_stat)
+
+                    }
+                    
+                    let totalPokemon = document.getElementById('totalPokemon2')
+                    totalPokemon.innerHTML = totalPokemon2
+                    
+                    console.log(statsPokemon2)
+                    console.log(totalPokemon2)
+
+
+                    checarVencedor()
+                })
+            )
+
+            function checarVencedor() {
+                for(let i = 0; i < 6; i++) {
+                    let divStatPokemon1 = listaStats.children[i].children[0]
+                    let divStatPokemon2 = listaStats.children[i].children[2]
+                    console.log(statsPokemon1[i] + ' - ' + statsPokemon2[i])
+
+                    if(parseInt(statsPokemon1[i]) > parseInt(statsPokemon2[i])) {
+                        divStatPokemon1.style.backgroundColor = 'green'
+                        divStatPokemon2.style.backgroundColor = 'red'
+                    } else if(parseInt(statsPokemon1[i]) < parseInt(statsPokemon2[i])) {
+                        divStatPokemon2.style.backgroundColor = 'green'
+                        divStatPokemon1.style.backgroundColor = 'red'
+                    } else {
+                        divStatPokemon1.style.backgroundColor = 'gold'
+                        divStatPokemon2.style.backgroundColor = 'gold'
+                    }
+
+                    if(statsPokemon1[i] === undefined || statsPokemon2[i] === undefined) {
+                        console.log('nao tem')
+                    }
+                }
+
+
+                let divTotalPokemon1 = document.getElementById('totalPokemon1')
+                console.log(divTotalPokemon1)
+                let divTotalPokemon2 = document.getElementById('totalPokemon2')
+
+                if(parseInt(totalPokemon1) > parseInt(totalPokemon2)) {
+                    divTotalPokemon1.style.backgroundColor = 'green'
+                    divTotalPokemon2.style.backgroundColor = 'red'
+                } else if (parseInt(totalPokemon1) < parseInt(totalPokemon2)) {
+                    divTotalPokemon2.style.backgroundColor = 'green'
+                    divTotalPokemon1.style.backgroundColor = 'red'
+                } else {
+                    divTotalPokemon1.style.backgroundColor = 'gold'
+                    divTotalPokemon2.style.backgroundColor = 'gold'
+                }
+            }
+
+    </script>
+</body>
+</html>
